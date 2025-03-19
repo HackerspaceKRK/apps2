@@ -1,0 +1,71 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/{{ ansible_system | lower }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+    - name: "Add current user to docker group"
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+    - name: Install various utilities on host
+      apt:
+        pkg:
+          - htop
+          - vim
+          - git
+          - tmux
+          - tree
+          - jq
+          - unzip
+          - zip
+          - zsh
+          - fish
+          - wget
+          - curl
+          - build-essential # might come in handy when compiling stuff
+          - duf # check free disk (gives nice output)
+          - ncdu # see what files are taking up space
+          - gdu # ncdu, but faster
+          - fd-find # find files
+          - ripgrep # grep but faster
+          - git
+          - micro # text editor
+          - lsof # list open files
+          - gh # Github CLI
+        state: latest
+        update_cache: true
+      
+

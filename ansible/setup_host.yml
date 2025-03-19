@@ -1,0 +1,29 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Create group apps2
+    group:
+      name: apps2
+      state: present
+  - name: Make sure that apps2 is checked out at /opt/apps2
+    git:
+      repo: 'https://github.com/HackerspaceKRK/apps2.git'
+      dest: '/opt/apps2'
+      update: no
+      umask: '0007'
+  - name: Ensure that apps2 is owned by apps2 group and has proper permissions
+    ansible.builtin.file:
+       path: /opt/apps2
+       owner: root
+       group: apps2
+       recurse: yes
+  - name: "Set group sticky bit for directories in /opt/apps2"
+    command: find /opt/apps2 -type d -exec chmod g+sx {} \;
+
+  - name: "Set /opt/apps2 as a git safe.directory for all users"
+    command: git config --system safe.directory /opt/apps2
+
+
+  
+      
