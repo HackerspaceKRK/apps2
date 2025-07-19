@@ -1,0 +1,39 @@
+- name: Ensure .ssh directory exists
+  ansible.builtin.file:
+    path: "/home/{{ user_unix_name }}/.ssh"
+    state: directory
+    owner: "{{ user_unix_name }}"
+    group: "{{ user_unix_name }}"
+    mode: '0700'
+- name: Fetch GitHub keys and add to authorized_keys.new for {{ user_unix_name }}
+  ansible.builtin.get_url:
+    url: "https://github.com/{{ user_github_name }}.keys"
+    dest: "/home/{{ user_unix_name }}/.ssh/authorized_keys.new"
+    owner: "{{ user_unix_name }}"
+    group: "{{ user_unix_name }}"
+    mode: '0600'
+- name: Hash of old authorized_keys
+  ansible.builtin.stat:
+    path: /home/{{ user_unix_name }}/.ssh/authorized_keys
+    checksum: sha1
+    get_checksum: true
+  register: old_keys_checksum
+- name: Hash of new authorized_keys
+  ansible.builtin.stat:
+    path: "/home/{{ user_unix_name }}/.ssh/authorized_keys.new"
+    checksum: sha1
+    get_checksum: true
+  register: new_keys_checksum
+- name: Validate authorized_keys.new with ssh-keygen -lf
+  ansible.builtin.command: ssh-keygen -lf /home/{{ user_unix_name }}/.ssh/authorized_keys.new
+  failed_when: not old_keys_checksum.stat.exists and key_validation.rc != 0
+  changed_when: false
+  when: old_keys_checksum.stat.exists and new_keys_checksum.stat.exists and old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum
+  register: key_validation
+- name: Replace keys
+  ansible.builtin.copy:
+    src: /home/{{ user_unix_name }}/.ssh/authorized_keys.new
+    dest: /home/{{ user_unix_name }}/.ssh/authorized_keys
+    mode: "0600"
+    remote_src: true
+  when: (not old_keys_checksum.stat.exists) or (old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum and key_validation.rc == 0)

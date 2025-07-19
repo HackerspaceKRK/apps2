@@ -1,0 +1,7 @@
+
+ ██╗  ██╗███████╗  FQDN:   {{ common_bash_red }}{{ common_bash_bold }}{{ ansible_fqdn }}{{ common_bash_reset }}
+ ██║  ██║██╔════╝  IP:     {{ common_bash_bold }}{{ ansible_all_ipv4_addresses|sort|join(', ') }}{{ common_bash_reset }}
+ ███████║███████╗  OS:     {{ common_bash_bold }}{{ ansible_distribution }}{{ common_bash_reset }} {{ ansible_distribution_version }} ({% if ansible_distribution == 'Debian' %}{{ common_bash_bold }}{% endif %}{{ ansible_distribution_release }}{{ common_bash_reset }})
+ ██╔══██║╚════██║  Kernel: {{ ansible_kernel }} ({{ ansible_architecture }})
+ ██║  ██║███████║  Memory: {{ ansible_memtotal_mb }}MB RAM, {{ ansible_swaptotal_mb }}MB swap
+ ╚═╝  ╚═╝╚══════╝  CPU:    {{ ansible_processor_count }}x {{ ' '.join(ansible_processor[1].replace('(R)', '').split()) }}

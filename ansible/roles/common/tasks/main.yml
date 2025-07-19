@@ -1,0 +1,58 @@
+- name: Install common packages
+  ansible.builtin.apt:
+    pkg:
+      - htop
+      - vim
+      - git
+      - tmux
+      - tree
+      - jq
+      - unzip
+      - zip
+      - zsh
+      - fish
+      - wget
+      - curl
+      - build-essential # might come in handy when compiling stuff
+      - duf # check free disk (gives nice output)
+      - ncdu # see what files are taking up space
+      - gdu # ncdu, but faster
+      - fd-find # find files
+      - ripgrep # grep but faster
+      - micro # text editor
+      - lsof # list open files
+      - gh # Github CLI
+      - util-linux  # fstrim and stuff
+      - screen
+      - mc
+      - logrotate
+      - iptables
+      - ipset
+      - sudo
+      - iptraf-ng
+      - mosh
+      - smartmontools
+      - net-tools
+    state: present
+  tags: packages
+- name: Copy common profile.d files
+  ansible.builtin.copy:
+    src: files/profile.d
+    dest: /etc/profile.d
+    mode: '755'
+  tags: configure
+
+- name: Install MOTD
+  ansible.builtin.template:
+    src: templates/motd.j2
+    dest: /etc/motd
+    mode: '644'
+  tags: motd, configure
+
+- name: Install locale.gen
+  ansible.builtin.copy:
+    src: files/locale.gen
+    dest: /etc/locale.gen
+    mode: '644'
+  notify: Regenerate locale
+  tags: locale, configure

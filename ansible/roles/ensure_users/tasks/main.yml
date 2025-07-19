@@ -1,0 +1,22 @@
+- name: Ensure group apps2 exists
+  ansible.builtin.group:
+    name: apps2
+    state: present
+- name: Ensure user exists
+  ansible.builtin.user:
+    name: "{{ item.unix_name }}"
+    groups: sudo
+    append: true
+    create_home: true
+    generate_ssh_key: true
+    ssh_key_type: ed25519
+    password: ''
+    update_password: on_create
+  loop: "{{ users_list }}"
+- name: Get / Update SSH keys
+  ansible.builtin.include_tasks:
+    file: update_keys.yml
+  vars:
+    user_unix_name: "{{ item.unix_name }}"
+    user_github_name: "{{ item.github_name }}"
+  loop: "{{ users_list }}"

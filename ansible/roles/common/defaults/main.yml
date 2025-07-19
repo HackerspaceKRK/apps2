@@ -1,0 +1,23 @@
+common_bash_esc: "\e"
+common_bash_reset: "{{ common_bash_esc }}[0m"
+
+common_bash_bold: "{{ common_bash_esc }}[1m"
+common_bash_bold_reset: "{{ common_bash_esc }}[21m"
+
+common_bash_underlined: "{{ common_bash_esc }}[4m"
+common_bash_underlined_reset: "{{ common_bash_esc }}[24m"
+
+common_bash_blink: "{{ common_bash_esc }}[5m"
+common_bash_blink_reset: "{{ common_bash_esc }}[25m"
+
+# Colors
+common_bash_default: "{{ common_bash_esc }}[39m"
+
+common_bash_black: "{{ common_bash_esc }}[30m"
+common_bash_red: "{{ common_bash_esc }}[31m"
+common_bash_green: "{{ common_bash_esc }}[32m"
+common_bash_yellow: "{{ common_bash_esc }}[33m"
+common_bash_blue: "{{ common_bash_esc }}[34m"
+common_bash_magenta: "{{ common_bash_esc }}[35m"
+common_bash_cyan: "{{ common_bash_esc }}[36m"
+common_bash_white: "{{ common_bash_esc }}[97m"
