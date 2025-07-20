@@ -35,5 +35,11 @@
     src: /home/{{ user_unix_name }}/.ssh/authorized_keys.new
     dest: /home/{{ user_unix_name }}/.ssh/authorized_keys
     mode: "0600"
+    owner: "{{ user_unix_name }}"
+    group: "{{ user_unix_name }}"
     remote_src: true
-  when: (not old_keys_checksum.stat.exists) or (old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum and key_validation.rc == 0)
+  #when: (not old_keys_checksum.stat.exists) or (old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum and key_validation.rc == 0)
+- name: Remove temp file
+  ansible.builtin.file:
+   state: absent
+   path: /home/{{ user_unix_name }}/.ssh/authorized_keys.new
