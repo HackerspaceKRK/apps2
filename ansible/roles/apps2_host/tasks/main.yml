@@ -8,7 +8,7 @@
     groups: apps2
     append: true
   loop: "{{ users_list }}"
-- name: Make sure that apps2 is checked out at /opt/apps2
+- name: Make sure that apps2 is checked out at /opt/apps2 # noqa: latest[git] < disabling linter on this line because it's stupid
   ansible.builtin.git:
     repo: 'https://github.com/HackerspaceKRK/apps2.git'
     dest: '/opt/apps2'
