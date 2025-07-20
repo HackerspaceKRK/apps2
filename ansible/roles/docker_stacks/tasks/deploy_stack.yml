@@ -1,11 +1,11 @@
-- name: Check if stack {{ stack_path | basename }} needs to be updated
+- name: Check if stack needs to be updated - {{ stack_path | basename }}
   ansible.builtin.copy: &stack_copy_params
     src: "{{ stack_path }}"
     dest: "/opt/stacks/"
     mode: "755"
   check_mode: true
   register: stack_check
-- name: Put stack {{ stack_path | basename }} down if changed
+- name: Put stack down if changed - {{ stack_path | basename }}
   community.docker.docker_compose_v2:
     project_src: "/opt/stacks/{{ stack_path | basename }}"
     state: absent

@@ -1,0 +1,5 @@
+- name: Ensure Frigate data dir exits
+  ansible.builtin.file:
+    path: /data/frigate
+    state: directory
+    mode: "755"

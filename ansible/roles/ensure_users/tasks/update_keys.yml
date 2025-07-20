@@ -12,6 +12,7 @@
     owner: "{{ user_unix_name }}"
     group: "{{ user_unix_name }}"
     mode: '0600'
+  changed_when: false
 - name: Hash of old authorized_keys
   ansible.builtin.stat:
     path: /home/{{ user_unix_name }}/.ssh/authorized_keys
@@ -43,3 +44,4 @@
   ansible.builtin.file:
     state: absent
     path: /home/{{ user_unix_name }}/.ssh/authorized_keys.new
+  changed_when: false

@@ -1,16 +1,16 @@
 - name: HSKRK Limanowskiego
-  hosts: none
+  hosts: apps2
   roles:
     - { role: common, tags: common }
     - { role: ensure_users, tags: users }
     - { role: docker_host, tags: docker }
 
 - name: HSKRK Apps2
-  hosts: none
+  hosts: apps2
   roles:
     - { role: apps2_host, tags: apps }
 
 - name: Docker stacks
-  hosts: dominik
+  hosts: apps2
   roles:
     - { role: docker_stacks, tags: docker }
