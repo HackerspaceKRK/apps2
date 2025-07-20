@@ -1,0 +1,24 @@
+- name: Ensure stacks dir exists
+  ansible.builtin.file:
+    path: /opt/stacks
+    state: directory
+    mode: "755"
+- name: Check if there are any common stacks
+  ansible.builtin.stat:
+    path: "{{ role_path }}/stacks/all"
+  delegate_to: localhost
+  register: common_stacks
+- name: List common stacks
+  when: common_stacks.stat.exists
+  ansible.builtin.find:
+    paths: "{{ role_path }}/stacks/all"
+    file_type: directory
+  delegate_to: localhost
+  register: common_stacks_list
+- name: Deploy common stacks
+  when: common_stacks.stat.exists
+  loop: "{{ common_stacks_list.files }}"
+  ansible.builtin.include_tasks:
+    file: deploy_stack.yml
+  vars:
+    stack_path: "{{ item.path }}"

@@ -1,0 +1,23 @@
+- name: Print path
+  ansible.builtin.debug:
+    msg: "{{ stack_path }}"
+
+- name: Check if stack needs to be updated
+  ansible.builtin.copy: &stack_copy_params
+    src: "{{ stack_path }}"
+    dest: "/opt/stacks/"
+    mode: "755"
+  check_mode: true
+  register: stack_check
+- name: Put stack down if changed
+  community.docker.docker_compose_v2:
+    project_src: "/opt/stacks/{{ stack_path | basename }}"
+    state: absent
+  failed_when: false
+  when: stack_check.changed # noqa: no-handler # because that dumb linter complains, but I want to stop stack now
+- name: Copy stack
+  ansible.builtin.copy: *stack_copy_params
+- name: Start the stack
+  community.docker.docker_compose_v2:
+    project_src: "/opt/stacks/{{ stack_path | basename }}"
+    state: present
