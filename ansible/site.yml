@@ -9,8 +9,9 @@
   hosts: apps2
   roles:
     - { role: apps2_host, tags: apps }
-
-- name: Docker stacks
-  hosts: apps2
-  roles:
     - { role: docker_stacks, tags: docker }
+    - { role: auth_proxy, tags: docker }
+
+- name: HSKRK Auth Proxy
+  hosts: none
+  roles: []
