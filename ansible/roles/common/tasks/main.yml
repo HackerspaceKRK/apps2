@@ -33,6 +33,7 @@
       - mosh
       - smartmontools
       - net-tools
+      - python3-requests
     state: present
   tags: packages
 - name: Copy common profile.d files

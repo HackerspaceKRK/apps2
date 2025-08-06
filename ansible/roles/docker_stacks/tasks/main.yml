@@ -11,13 +11,13 @@
 - name: Check if there are common stack prerequisites
   when: common_stacks.stat.exists
   ansible.builtin.stat:
-    path: "{{ role_path }}/stacks/all/prerequisite.yml"
+    path: "{{ role_path }}/stacks/all/prerequisites.yml"
   delegate_to: localhost
   register: common_stacks_prerequisites
 - name: Execute common stack prerequisites
   when: common_stacks.stat.exists and common_stacks_prerequisites.stat.exists
   ansible.builtin.include_tasks:
-    file: "{{ role_path }}/stacks/all/prerequisite.yml"
+    file: "{{ role_path }}/stacks/all/prerequisites.yml"
 - name: List common stacks
   when: common_stacks.stat.exists
   ansible.builtin.find:
@@ -41,13 +41,13 @@
 - name: Check if there are host stack prerequisites
   when: host_stacks.stat.exists
   ansible.builtin.stat:
-    path: "{{ role_path }}/stacks/{{ inventory_hostname }}/prerequisite.yml"
+    path: "{{ role_path }}/stacks/{{ inventory_hostname }}/prerequisites.yml"
   delegate_to: localhost
   register: host_stacks_prerequisites
 - name: Execute host stack prerequisites
   when: host_stacks.stat.exists and host_stacks_prerequisites.stat.exists
   ansible.builtin.include_tasks:
-    file: "{{ role_path }}/stacks/{{ inventory_hostname }}/prerequisite.yml"
+    file: "{{ role_path }}/stacks/{{ inventory_hostname }}/prerequisites.yml"
 - name: "DBG"
   ansible.builtin.debug:
     msg: "{{ host_stacks.stat.exists }}, {{ host_stacks_prerequisites.stat.exists }}"

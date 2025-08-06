@@ -3,3 +3,7 @@
     path: /data/frigate
     state: directory
     mode: "755"
+
+- name: Ensure service monitoring network exists
+  community.docker.docker_network:
+    name: 'system_default'
