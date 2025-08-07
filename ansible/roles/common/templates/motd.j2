@@ -5,3 +5,5 @@
  ██╔══██║╚════██║  Kernel: {{ ansible_kernel }} ({{ ansible_architecture }})
  ██║  ██║███████║  Memory: {{ ansible_memtotal_mb }}MB RAM, {{ ansible_swaptotal_mb }}MB swap
  ╚═╝  ╚═╝╚══════╝  CPU:    {{ ansible_processor_count }}x {{ ' '.join(ansible_processor[1].replace('(R)', '').split()) }}
+
+ This machine is configured using ansible at: https://github.com/HackerspaceKRK/apps2/tree/dominiks-playbook/ansible
