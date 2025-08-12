@@ -10,10 +10,10 @@ birdseye:
   width: 1920
   height: 1080
 
-#detectors:
-#  coral:
-#    type: edgetpu
-#    device: usb
+detectors:
+  coral:
+    type: edgetpu
+    device: usb
 
 # detectors:
 #   onnx:
@@ -29,18 +29,18 @@ birdseye:
 
 
 detect:
-  enabled: false
+  enabled: true
   fps: 5
-#  width: 1280
-#  height: 720
+  width: 1280
+  height: 720
 
 objects:
   track:
     - person
 
-#motion:
-#  threshold: 50
-#  contour_area: 50
+motion:
+  threshold: 50
+  contour_area: 50
 
 record:
 #  sync_recordings: true

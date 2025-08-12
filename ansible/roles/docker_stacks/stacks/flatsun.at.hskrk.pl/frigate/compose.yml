@@ -20,11 +20,8 @@ services:
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
-
       - ./conf:/config
-
       - /data/frigate:/media/frigate
-
 #      - ./frigate-tmp:/tmp/cache # Spróbujmy z cache w RAM :D
       - type: tmpfs
         target: /tmp/cache
