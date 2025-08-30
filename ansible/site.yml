@@ -1,5 +1,5 @@
 - name: HSKRK Limanowskiego
-  hosts: apps2
+  hosts: limanowskiego
   roles:
     - { role: common, tags: common }
     - { role: ensure_users, tags: users }
