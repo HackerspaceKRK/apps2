@@ -1,0 +1,5 @@
+[Unit]
+Description="Healthchecks.io ping"
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/curl -fsS -m 10 --retry 5 -o /dev/null --data-raw "$(/bin/uptime)" "https://hc-ping.com/{{ common_healthchecks_ping_key }}/{{ machine_name }}?create=1"'
