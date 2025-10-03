@@ -39,7 +39,7 @@
     owner: "{{ user_unix_name }}"
     group: "{{ user_unix_name }}"
     remote_src: true
-  when: (not old_keys_checksum.stat.exists) or (old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum and key_validation.rc == 0)
+  when: (not old_keys_checksum.stat.exists) or (new_keys_checksum.stat.exists and old_keys_checksum.stat.checksum != new_keys_checksum.stat.checksum and key_validation.rc == 0)
 - name: Remove temp file
   ansible.builtin.file:
     state: absent
