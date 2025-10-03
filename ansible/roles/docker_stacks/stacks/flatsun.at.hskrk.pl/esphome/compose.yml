@@ -1,0 +1,16 @@
+services:
+  esphome:
+    container_name: esphome
+    image: ghcr.io/esphome/esphome:latest
+    restart: unless-stopped
+    volumes:
+      - ./config:/config
+
+      # See: https://github.com/esphome/esphome/blob/dev/docker/docker_entrypoint.sh#L6
+      - ./build:/build # Separate those so that configs can be checked in to git someday
+      - ./cache:/cache # Separate those so that configs can be checked in to git someday
+      - /etc/localtime:/etc/localtime:ro
+    privileged: true
+    network_mode: host
+#    environment:
+#      - USERNAME=test
