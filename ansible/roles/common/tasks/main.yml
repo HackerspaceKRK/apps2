@@ -38,6 +38,7 @@
       - net-tools
       - python3-requests
       - fastfetch
+      - fd-find
     state: present
   tags: packages
 - name: Copy common profile.d files
