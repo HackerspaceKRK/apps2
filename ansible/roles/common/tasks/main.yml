@@ -37,6 +37,7 @@
       - smartmontools
       - net-tools
       - python3-requests
+      - fastfetch
     state: present
   tags: packages
 - name: Copy common profile.d files
