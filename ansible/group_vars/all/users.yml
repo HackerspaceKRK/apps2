@@ -1,0 +1,9 @@
+users_list:
+  - { unix_name: "alufers", github_name: "alufers" }
+  - { unix_name: "gbdlin", github_name: "gbdlin" }
+  - { unix_name: "domints", github_name: "domints" }
+  - { unix_name: "zagura", github_name: "zagura" }
+  - { unix_name: "pidpawel", github_name: "pidpawel" }
+  - { unix_name: "wprzyb", github_name: "wprzyb" }
+  - { unix_name: "alwaro", github_name: "gregory353a" }
+  - { unix_name: "hbrylkowski", github_name: "hbrylkowski" }

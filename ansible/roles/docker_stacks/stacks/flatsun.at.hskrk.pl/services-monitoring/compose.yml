@@ -1,0 +1,35 @@
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    networks:
+      - services-monitoring_default
+      - system_default
+    ports:
+      - 9090:9090
+    restart: always
+#    deploy:
+#      labels:
+#        - "traefik.enable=true"
+#        - "traefik.docker.network=system_default"
+#        - "traefik.http.services.prometheus.loadbalancer.server.port=9090"
+#        - "traefik.http.routers.prometheus.rule=Host(`prometheus.apps.hskrk.pl`)"
+#        - "traefik.http.routers.prometheus.tls=true"
+#        - "traefik.http.routers.prometheus.tls.certresolver=myresolver"
+#        - "traefik.http.routers.prometheus.middlewares=authentik@docker"
+
+networks:
+  system_default:
+    external: true
+  services-monitoring_default:
+    internal: true
+
+volumes:
+  prometheus_data:

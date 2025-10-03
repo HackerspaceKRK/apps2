@@ -1,0 +1,17 @@
+- name: HSKRK Limanowskiego
+  hosts: limanowskiego
+  roles:
+    - { role: common, tags: common }
+    - { role: ensure_users, tags: users }
+    - { role: docker_host, tags: docker }
+
+- name: HSKRK Apps2
+  hosts: apps2
+  roles:
+    - { role: apps2_host, tags: apps }
+    - { role: docker_stacks, tags: docker }
+    - { role: auth_proxy, tags: docker }
+
+- name: HSKRK Auth Proxy
+  hosts: none
+  roles: []

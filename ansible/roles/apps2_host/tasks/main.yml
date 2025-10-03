@@ -1,0 +1,30 @@
+- name: Create group apps2
+  ansible.builtin.group:
+    name: apps2
+    state: present
+- name: "Add noc users to apps2 group"
+  ansible.builtin.user:
+    name: "{{ item.unix_name }}"
+    groups: apps2
+    append: true
+  loop: "{{ users_list }}"
+- name: Make sure that apps2 is checked out at /opt/apps2 # noqa: latest[git] < disabling linter on this line because it's stupid
+  ansible.builtin.git:
+    repo: 'https://github.com/HackerspaceKRK/apps2.git'
+    dest: '/opt/apps2'
+    update: false
+    umask: '0007'
+- name: Ensure that apps2 is owned by apps2 group and has proper permissions
+  ansible.builtin.file:
+    path: /opt/apps2
+    owner: root
+    group: apps2
+    recurse: true
+- name: "Set group sticky bit for directories in /opt/apps2"
+  ansible.builtin.command: find /opt/apps2 -type d -exec chmod g+sx {} \;
+  changed_when: true
+- name: "Set /opt/apps2 as a git safe.directory for all users"
+  community.general.git_config:
+    scope: "system"
+    name: "safe.directory"
+    value: "/opt/apps2"

@@ -1,0 +1,83 @@
+- name: Update apt cache
+  ansible.builtin.apt:
+    cache_valid_time: 3600
+- name: Install common packages
+  ansible.builtin.apt:
+    pkg:
+      - htop
+      - vim
+      - git
+      - tmux
+      - tree
+      - jq
+      - unzip
+      - zip
+      - zsh
+      - fish
+      - wget
+      - curl
+      - build-essential # might come in handy when compiling stuff
+      - duf # check free disk (gives nice output)
+      - ncdu # see what files are taking up space
+      - gdu # ncdu, but faster
+      - fd-find # find files
+      - ripgrep # grep but faster
+      - micro # text editor
+      - lsof # list open files
+      - gh # Github CLI
+      - util-linux  # fstrim and stuff
+      - screen
+      - mc
+      - logrotate
+      - iptables
+      - ipset
+      - sudo
+      - iptraf-ng
+      - mosh
+      - smartmontools
+      - net-tools
+      - python3-requests
+    state: present
+  tags: packages
+- name: Copy common profile.d files
+  ansible.builtin.copy:
+    src: files/profile.d
+    dest: /etc/profile.d
+    mode: '755'
+  tags: configure
+
+- name: Install MOTD
+  ansible.builtin.template:
+    src: templates/motd.j2
+    dest: /etc/motd
+    mode: '644'
+  tags: motd, configure
+
+- name: Install locale.gen
+  ansible.builtin.copy:
+    src: files/locale.gen
+    dest: /etc/locale.gen
+    mode: '644'
+  notify: Regenerate locale
+  tags: locale, configure
+
+- name: Deploy healthcheck ping timer
+  ansible.builtin.template:
+    src: templates/healthchecks.timer.j2
+    dest: /etc/systemd/system/healthchecks.timer
+    mode: '644'
+  tags: healthcheck, configure
+
+- name: Deploy healthcheck ping service
+  ansible.builtin.template:
+    src: templates/healthchecks.service.j2
+    dest: /etc/systemd/system/healthchecks.service
+    mode: '644'
+  tags: healthcheck, configure
+
+- name: Enable and start healthcheck ping timer
+  ansible.builtin.systemd_service:
+    name: healthchecks.timer
+    enabled: true
+    state: started
+    daemon_reload: true

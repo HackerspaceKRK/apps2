@@ -1,1 +1,5 @@
 .env
+
+# ansible-lint temp folder
+.ansible
+vault_pass

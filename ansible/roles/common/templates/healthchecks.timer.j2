@@ -1,0 +1,9 @@
+[Unit]
+Description="Pings healthchecks.io every minute"
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30sec
+
+[Install]
+WantedBy=timers.target

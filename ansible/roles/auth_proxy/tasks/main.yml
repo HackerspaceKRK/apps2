@@ -1,0 +1,35 @@
+- name: "Pull auth proxy repo" # noqa: latest[git]
+  ansible.builtin.git: &auth_proxy_pull
+    dest: /opt/stacks/auth-proxy
+    repo: git@github.com:HackerspaceKRK/auth-proxy.git
+    accept_newhostkey: true
+  check_mode: true
+  register: pull_check
+- name: Put stack down if changed - auth-proxy
+  community.docker.docker_compose_v2:
+    project_src: "/opt/stacks/auth-proxy"
+    state: absent
+  failed_when: false
+  when: pull_check.changed # noqa: no-handler # because that dumb linter complains, but I want to stop stack now
+- name: "Update auth proxy repo" # noqa: latest[git]
+  ansible.builtin.git: *auth_proxy_pull
+- name: "Ensure env file"
+  ansible.builtin.template:
+    src: templates/.env.j2
+    dest: /opt/stacks/auth-proxy/.env
+    mode: "644"
+  vars:
+    authentik_token: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64346436313930383138626162626632613463346562346163353063666563663362633466313936
+          3061376633623062613065323566396638303664373635340a306661333436303033613263373030
+          38633836353531313134356335666539646261656661393565313032346537376665326439303963
+          3938363538623835310a613632646630306234313435393935323738393838626632666135313663
+          35386262396431356162366635306438623636663066326138353535616361333666653234356435
+          38653639626237633938646435633038613138613463656337396635303431343764313230363364
+          326337306331376565643439383166393035
+- name: Start the auth-proxy stack
+  community.docker.docker_compose_v2:
+    project_src: "/opt/stacks/auth-proxy"
+    state: present
+    build: always
