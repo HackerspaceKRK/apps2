@@ -11,6 +11,20 @@
     - { role: apps2_host, tags: apps }
     - { role: docker_stacks, tags: docker }
     - { role: auth_proxy, tags: docker }
+    - role: ntd.nut
+      nut_mode: standalone
+      nut_ups:
+        - name: ups_ces
+          driver: nutdrv_qx
+          device: 006
+          description: CES GX 1000
+          extra: |
+            vendorid = "0665"
+            productid = "5161"
+            bus = "001"
+            busport = "005"
+
+            
 
 - name: HSKRK Auth Proxy
   hosts: none
