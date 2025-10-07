@@ -3,3 +3,4 @@
 # ansible-lint temp folder
 .ansible
 vault_pass
+ansible/library
