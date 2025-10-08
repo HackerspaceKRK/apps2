@@ -4,3 +4,4 @@
 .ansible
 vault_pass
 ansible/library
+*.secret.txt

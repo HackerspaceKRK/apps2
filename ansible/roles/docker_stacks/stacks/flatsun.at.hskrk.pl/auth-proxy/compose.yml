@@ -1,0 +1,13 @@
+services:
+  auth-proxy:
+    restart: unless-stopped
+    image: ghcr.io/hackerspacekrk/auth-proxy:latest
+    ports:
+      - "8456:80"
+    environment:
+      - AUTHENTIK_TOKEN_FILE=/run/secrets/authentik_token
+    secrets:
+      - authentik_token
+secrets:
+  authentik_token:
+    file: ./authentik_token.secret.txt

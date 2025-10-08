@@ -10,7 +10,6 @@
   roles:
     - { role: apps2_host, tags: apps }
     - { role: docker_stacks, tags: docker }
-    - { role: auth_proxy, tags: docker }
     - role: ntd.nut
       nut_mode: standalone
       nut_ups:
