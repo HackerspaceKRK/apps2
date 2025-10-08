@@ -1,4 +1,4 @@
-version: 0.15-1
+version: 0.16-0
 
 mqtt:
   enabled: false
@@ -86,26 +86,36 @@ go2rtc:
 
   webrtc:
     candidates:
-      - frigate.hskrk.pl:8666
-      - 10.12.20.97:8666
+      - flatsun.at.hskrk.pl:8666
+      - 10.12.20.5:8666
       - stun:8666
 
   streams:
     domofon: rtsp://10.12.20.10/live/ch00_0
-    klatka_schodowa: rtsp://admin:HSKrk2137!@10.12.20.50:554/cam/realmonitor?channel=1&subtype=0
-    elelab_na_drzwi: rtsp://admin:HSKrk2137!@10.12.20.51:554/cam/realmonitor?channel=1&subtype=0
-    hardroom_od_okna: rtsp://admin:HSKrk2137!@10.12.20.52:554/cam/realmonitor?channel=1&subtype=0
-    anc_na_drzwi: rtsp://admin:HSKrk2137!@10.12.20.53:554/cam/realmonitor?channel=1&subtype=0
-    korytarz_na_wejscie: rtsp://admin:HSKrk2137!@10.12.20.54:554/cam/realmonitor?channel=1&subtype=0
-    elelab_na_drukarki: rtsp://admin:HSKrk2137!@10.12.20.55:554/cam/realmonitor?channel=1&subtype=0
-    cnc_na_drukarki: rtsp://admin:HSKrk2137!@10.12.20.56:554/cam/realmonitor?channel=1&subtype=0
-    maszynownia_na_tokarke: rtsp://admin:HSKrk2137!@10.12.20.57:554/cam/realmonitor?channel=1&subtype=0
-    kuznia_na_okno: rtsp://admin:HSKrk2137!@10.12.20.58:554/cam/realmonitor?channel=1&subtype=0
-    audytorium: rtsp://admin:HSKrk2137!@10.12.20.59:554/cam/realmonitor?channel=1&subtype=0
+    klatka_schodowa:
+      rtsp://admin:HSKrk2137!@10.12.20.50:554/cam/realmonitor?channel=1&subtype=0
+    elelab_na_drzwi:
+      rtsp://admin:HSKrk2137!@10.12.20.51:554/cam/realmonitor?channel=1&subtype=0
+    hardroom_od_okna:
+      rtsp://admin:HSKrk2137!@10.12.20.52:554/cam/realmonitor?channel=1&subtype=0
+    anc_na_drzwi:
+      rtsp://admin:HSKrk2137!@10.12.20.53:554/cam/realmonitor?channel=1&subtype=0
+    korytarz_na_wejscie:
+      rtsp://admin:HSKrk2137!@10.12.20.54:554/cam/realmonitor?channel=1&subtype=0
+    elelab_na_drukarki:
+      rtsp://admin:HSKrk2137!@10.12.20.55:554/cam/realmonitor?channel=1&subtype=0
+    cnc_na_drukarki:
+      rtsp://admin:HSKrk2137!@10.12.20.56:554/cam/realmonitor?channel=1&subtype=0
+    maszynownia_na_tokarke:
+      rtsp://admin:HSKrk2137!@10.12.20.57:554/cam/realmonitor?channel=1&subtype=0
+    kuznia_na_okno:
+      rtsp://admin:HSKrk2137!@10.12.20.58:554/cam/realmonitor?channel=1&subtype=0
+    audytorium:
+      rtsp://admin:HSKrk2137!@10.12.20.59:554/cam/realmonitor?channel=1&subtype=0
 
-#    hardroom_od_drzwi: 
+#    hardroom_od_drzwi:
 #      ffmpeg:rtsp://10.12.5.11:554/user=admin&password=&channel=1&stream=0.sdp?real_stream--rtp-caching=100
-#    korytarz_wyjscie: 
+#    korytarz_wyjscie:
 #      ffmpeg:rtsp://zoneminder:Zoneminder1!@10.12.5.103:554/cam/realmonitor?channel=1&subtype=0#hardware#video=h264#rotate=90
 #    magazynek_na_drzwi: ffmpeg:http://zminder:rednimenoz@10.12.5.12/channel1#hardware#video=h264
 
