@@ -1,0 +1,14 @@
+site = "limanowskiego"
+door_password = "srakenpierdakennaraziedozmiany"
+devices = [
+  {type = "relay-avt925", port = 0, name = "domofon"},
+]
+access_logfile = "/data/access-log.jsonl"
+
+sources = [
+  {source = "auth-proxy-ws", address = "ws://auth-proxy", access_token = "{{ auth_proxy_access_token }}"},
+  # {source = "local", file_path = "./ludzie.json", check_expiration = false},
+]
+
+[serial]
+port = "/dev/serial/by-id/usb-FTDI_USB__-__Serial-if00-port0"

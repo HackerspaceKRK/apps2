@@ -1,0 +1,17 @@
+services:
+  cankarp3:
+    restart: unless-stopped
+    image: ghcr.io/hackerspacekrk/cankarp3:0.1
+    volumes:
+      - ./config.toml:/code/config.toml:ro
+      - ./data:/data
+      - /dev:/dev
+    privileged: true
+    ports:
+      - "8457:80"
+    networks:
+      - auth_proxy
+
+networks:
+  auth_proxy:
+    external: true

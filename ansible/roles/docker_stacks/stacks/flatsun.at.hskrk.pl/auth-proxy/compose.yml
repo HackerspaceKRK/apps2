@@ -8,6 +8,11 @@ services:
       - AUTHENTIK_TOKEN_FILE=/run/secrets/authentik_token
     secrets:
       - authentik_token
+    networks:
+      - auth_proxy
 secrets:
   authentik_token:
     file: ./authentik_token.secret.txt
+networks:
+  auth_proxy:
+    external: true

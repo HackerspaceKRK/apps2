@@ -7,7 +7,9 @@
 - name: Ensure service monitoring network exists
   community.docker.docker_network:
     name: 'system_default'
-
+- name: Ensure service monitoring network exists
+  community.docker.docker_network:
+    name: 'auth_proxy'
 - name: Ensure /opt/stacks/auth-proxy dir exists
   ansible.builtin.file:
     path: /opt/stacks/auth-proxy
