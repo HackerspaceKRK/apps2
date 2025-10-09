@@ -42,3 +42,8 @@
     groups: docker
     append: true
   loop: "{{ users_list }}"
+- name: Install /etc/docker/daemon.json
+  ansible.builtin.copy:
+    src: files/daemon.json
+    dest: /etc/docker/daemon.json
+    mode: '644'
