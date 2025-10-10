@@ -32,6 +32,16 @@ services:
     # Listens on port 9199 by default
     environment:
       - NUT_EXPORTER_VARIABLES=battery.charge,battery.voltage,battery.voltage.nominal,input.voltage,input.voltage.nominal,ups.load,ups.status,ups.temperature,output.current,output.current.nominal,output.voltage,output.voltage.nominal
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - services-monitoring_default
+    restart: always
 
 networks:
   system_default:
