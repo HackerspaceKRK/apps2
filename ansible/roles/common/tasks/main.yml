@@ -42,6 +42,7 @@
       - nut # UPS monitoring
       - tio # serial console
       - prometheus-node-exporter
+      - lldpd # Shows the device in the Mikrotik Neighbors list
     state: present
   tags: packages
 - name: Copy common profile.d files
