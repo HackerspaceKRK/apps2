@@ -58,3 +58,8 @@ scrape_configs:
     metrics_path: /ups_metrics
     params:
       ups: ['ups_ces']  # The UPS name to query.
+  - job_name: 'cadvisor'
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['cadvisor:8080']
