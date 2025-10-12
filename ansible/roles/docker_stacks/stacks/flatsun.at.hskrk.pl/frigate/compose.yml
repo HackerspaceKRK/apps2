@@ -7,12 +7,8 @@ services:
     privileged: true
 
 # 2G SHM to bylo za malo nawet na v1 kamer u nas
-    shm_size: 3G
-    mem_limit: 7G
-    deploy:
-      resources:
-        limits:
-          memory: 7G
+    shm_size: 4G
+    mem_limit: 8G
 
     devices:
 #      - /dev/dri/renderD128
@@ -26,7 +22,7 @@ services:
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
-          size: 1G
+          size: 3G
 
     ports:
       - "8666:8666/tcp" # WebRTC over tcp
