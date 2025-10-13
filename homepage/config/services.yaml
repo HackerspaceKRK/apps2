@@ -2,3 +2,18 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
 
+- IoT:
+    - Domofon:
+        href: http://10.12.20.10
+        description: WELCOME PLEASE COME IN
+        icon: /icons/domofon.webp
+    - "Powermeter Lewy":
+        href: http://10.12.20.20/
+        description: Power consumption meter
+        icon: /icons/powermeter.png
+    - "Powermeter Prawy":
+        href: http://10.12.20.21/
+        description: Power consumption meter
+        icon: /icons/powermeter.png
+    
+

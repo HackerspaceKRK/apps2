@@ -8,7 +8,7 @@ services:
     labels:
       - homepage.group=IoT
       - homepage.name=Ciscofon Server
-      - homepage.icon=phone.svg
+      - homepage.icon=/icons/ciscofon.png
       - homepage.href=http://flatsun.at.hskrk.pl:5068/dashboard
       - homepage.description=Servers configs for IP phones over TFTP & HTTP 
     networks:
