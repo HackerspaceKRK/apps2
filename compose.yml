@@ -16,5 +16,5 @@ include:
   - ./cankarp3/compose.inc.yml
   - ./asterisk/compose.inc.yml
   - ./node-red/compose.inc.yml
-  - ./homarr/compose.inc.yml
+  - ./homepage/compose.inc.yml
 #  - ./dockge/compose.inc.yml # see: https://github.com/louislam/dockge/issues/612
