@@ -1,0 +1,18 @@
+services:
+  node-red:
+    restart: unless-stopped
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Warsaw
+    ports:
+      - "1880:1880"
+    networks:
+      - node-red
+      - asterisk
+      - mqtt
+    volumes:
+      - ./node-red-data:/data
+      
+
+networks:
+  node-red:

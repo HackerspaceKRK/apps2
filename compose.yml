@@ -15,3 +15,4 @@ include:
   - ./auth-proxy/compose.inc.yml
   - ./cankarp3/compose.inc.yml
   - ./asterisk/compose.inc.yml
+  - ./node-red/compose.inc.yml
