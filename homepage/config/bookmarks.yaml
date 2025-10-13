@@ -2,17 +2,14 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/bookmarks
 
-- Developer:
-    - Github:
-        - abbr: GH
-          href: https://github.com/
+- "Hackerspace Kraków":
+    - "Strona główna":
+        - abbr: HS
+          href: https://hackerspace-krk.pl/
 
-- Social:
-    - Reddit:
-        - abbr: RE
-          href: https://reddit.com/
+- Github:
+    - apps2:
+        - abbr: A2
+          href: https://github.com/HackerspaceKRK/apps2
 
-- Entertainment:
-    - YouTube:
-        - abbr: YT
-          href: https://youtube.com/
+
