@@ -1,0 +1,11 @@
+<CiscoIPPhoneDirectory>
+   <Title>Whizzy Towers</Title>
+   <DirectoryEntry>
+       <Telephone>99</Telephone>
+       <Name>Domofon XD</Name>
+   </DirectoryEntry>
+   <DirectoryEntry>
+       <Telephone>22</Telephone>
+       <Name>Datacenter XD</Name>
+   </DirectoryEntry>
+</CiscoIPPhoneDirectory>

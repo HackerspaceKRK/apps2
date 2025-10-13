@@ -8,3 +8,4 @@ include:
   - ./mqtt/compose.inc.yml
   - ./zigbee2mqtt/compose.inc.yml
   - ./esphome/compose.inc.yml
+  - ./ciscofon-server/compose.inc.yml

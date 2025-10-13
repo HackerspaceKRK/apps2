@@ -1,0 +1,8 @@
+<CiscoIPPhoneMenu>
+<Title>iCloud-Adressbuch</Title>
+<Prompt>---</Prompt>
+<MenuItem>
+<Name>Ksionzka</Name>
+<URL>http://10.12.20.5:5068/directory2.xml</URL>
+</MenuItem>
+</CiscoIPPhoneMenu>

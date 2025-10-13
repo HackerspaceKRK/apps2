@@ -1,0 +1,11 @@
+services:
+  ciscofon-server:
+    image: ghcr.io/hackerspacekrk/ciscofon-server:main
+    restart: unless-stopped
+    ports:
+      - "5068:5068" # Http
+      - "69:69/udp" # TFTP
+    volumes:
+      - ./ciscofonserver-config.yml:/config/ciscofonserver.yaml:ro
+      - ./tftp-root:/srv/tftp:rw
+      - ./http-root:/srv/http:rw
