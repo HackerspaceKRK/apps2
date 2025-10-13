@@ -1,0 +1,28 @@
+services:
+  asterisk:
+    image: andrius/asterisk:23.0.0-rc2_debian-trixie
+    restart: unless-stopped
+    ports:
+      - "5060:5060/udp" # SIP UDP
+      - "5060:5060/tcp" # SIP TCP
+      - "5061:5061/tcp" # SIP TLS
+      - "11100-11199:11100-11199/udp" # RTP Media (ensure these ports are open in firewall)
+    volumes:
+      - asterisk-logs:/var/log/asterisk
+      - ./config:/etc/asterisk
+      - asterisk-data:/var/lib/asterisk
+      - ./sounds:/var/lib/asterisk/sounds
+      - /etc/ssl/certs/:/etc/ssl/certs/:ro # Make downloading sounds over HTTPs work
+      -  type: tmpfs 
+         target: /var/cache/asterisk
+         tmpfs:
+           size: 512M
+    networks:
+        - asterisk
+        - services-monitoring
+    
+volumes:
+    asterisk-logs:
+    asterisk-data:
+networks:
+    asterisk:

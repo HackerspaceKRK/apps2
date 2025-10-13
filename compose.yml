@@ -14,3 +14,4 @@ include:
   - ./services-monitoring/compose.inc.yml
   - ./auth-proxy/compose.inc.yml
   - ./cankarp3/compose.inc.yml
+  - ./asterisk/compose.inc.yml
