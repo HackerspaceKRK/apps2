@@ -47,3 +47,8 @@
     src: files/daemon.json
     dest: /etc/docker/daemon.json
     mode: '644'
+- name: Install docker-wrapper at /usr/local/bin/docker
+  ansible.builtin.copy:
+    src: files/docker-wrapper.sh
+    dest: /usr/local/bin/docker
+    mode: '755'
