@@ -30,9 +30,9 @@ services:
     labels:
       - homepage.group=Security
       - homepage.name=Frigate
-      - homepage.icon=cctv.svg
+      - homepage.icon=frigate.svg
       - homepage.href=http://flatsun.at.hskrk.pl:5080
-      - homepage.description=NVR with AI object detection
+      - homepage.description=Camera NVR
       - homepage.widget.type=frigate
       - homepage.widget.url=http://flatsun.at.hskrk.pl:5080
     networks:
