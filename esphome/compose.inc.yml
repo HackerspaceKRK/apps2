@@ -11,3 +11,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
     privileged: true
     network_mode: host
+    labels:
+      - homepage.group=IoT
+      - homepage.name=ESPHome
+      - homepage.icon=esphome-alt.svg
+      - homepage.href=http://flatsun.at.hskrk.pl:6052
+      - homepage.description=Manage ESP8266/ESP32 devices
