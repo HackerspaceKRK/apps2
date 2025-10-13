@@ -6,7 +6,7 @@ devices = [
 access_logfile = "/data/access-log.jsonl"
 
 sources = [
-  {source = "auth-proxy-ws", address = "ws://auth-proxy", access_token = "{{ auth_proxy_access_token }}"},
+  {source = "auth-proxy", address = "http://auth-proxy", access_token = "{{ auth_proxy_access_token }}"},
   # {source = "local", file_path = "./ludzie.json", check_expiration = false},
 ]
 
