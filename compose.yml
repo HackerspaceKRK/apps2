@@ -12,3 +12,5 @@ include:
   - ./unifi/compose.inc.yml
   - ./frigate/compose.inc.yml
   - ./services-monitoring/compose.inc.yml
+  - ./auth-proxy/compose.inc.yml
+  - ./cancarp3/compose.inc.yml

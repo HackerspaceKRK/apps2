@@ -10,8 +10,4 @@ services:
     ports:
       - "8457:80"
     networks:
-      - auth_proxy
-
-networks:
-  auth_proxy:
-    external: true
+      - auth-proxy

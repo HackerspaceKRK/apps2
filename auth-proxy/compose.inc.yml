@@ -9,10 +9,9 @@ services:
     secrets:
       - authentik_token
     networks:
-      - auth_proxy
+      - auth-proxy
 secrets:
   authentik_token:
-    file: ./authentik_token.secret.txt
+    file: /opt/secrets/authentik_token.secret.txt
 networks:
-  auth_proxy:
-    external: true
+  auth-proxy:
