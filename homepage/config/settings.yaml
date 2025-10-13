@@ -1,1 +1,7 @@
-title: Hackerspace Kraków
+title: Hackerspace Kraków Dahsboard
+layout:
+  Monitoring:
+    style: row
+    columns: 4
+    useEqualHeights: true
+headerStyle: clean

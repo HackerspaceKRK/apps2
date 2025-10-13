@@ -2,11 +2,5 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/info-widgets/
 
-- resources:
-    cpu: true
-    memory: true
-    disk: /
-
-- search:
-    provider: google
-    target: _blank
+- logo:
+    icon: https://hackerspace-krk.pl/images/hackerspace_logo.svg
