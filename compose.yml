@@ -11,3 +11,4 @@ include:
   - ./ciscofon-server/compose.inc.yml
   - ./unifi/compose.inc.yml
   - ./frigate/compose.inc.yml
+  - ./services-monitoring/compose.inc.yml

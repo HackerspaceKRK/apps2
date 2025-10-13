@@ -29,6 +29,7 @@ services:
       - "5080:5000/tcp" # webpanel
     networks:
       - frigate
+      - services-monitoring
 
 networks:
     frigate:
