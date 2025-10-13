@@ -5,6 +5,12 @@ services:
     ports:
       - "5068:5068" # Http
       - "69:69/udp" # TFTP
+    labels:
+      - homepage.group=IoT
+      - homepage.name=Ciscofon Server
+      - homepage.icon=phone.svg
+      - homepage.href=http://flatsun.at.hskrk.pl:5068/dashboard
+      - homepage.description=Servers configs for IP phones over TFTP & HTTP 
     networks:
         - ciscofon-server
     volumes:

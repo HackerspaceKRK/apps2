@@ -15,6 +15,14 @@ services:
     user: root
     ports:
       - 9090:9090
+    labels:
+      - homepage.group=Monitoring
+      - homepage.name=Prometheus
+      - homepage.icon=prometheus.svg
+      - homepage.href=http://flatsun.at.hskrk.pl:9090
+      - homepage.description=Monitoring and alerting
+      - homepage.widget.type=prometheus
+      - homepage.widget.url=http://flatsun.at.hskrk.pl:9090
     restart: unless-stopped
 
   nut_exporter:

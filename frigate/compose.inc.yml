@@ -27,6 +27,14 @@ services:
       - "8666:8666/tcp" # WebRTC over tcp
       - "8666:8666/udp" # WebRTC over udp
       - "5080:5000/tcp" # webpanel
+    labels:
+      - homepage.group=Security
+      - homepage.name=Frigate
+      - homepage.icon=cctv.svg
+      - homepage.href=http://flatsun.at.hskrk.pl:5080
+      - homepage.description=NVR with AI object detection
+      - homepage.widget.type=frigate
+      - homepage.widget.url=http://flatsun.at.hskrk.pl:5080
     networks:
       - frigate
       - services-monitoring

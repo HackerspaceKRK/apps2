@@ -6,6 +6,12 @@ services:
       - TZ=Europe/Warsaw
     ports:
       - "1880:1880"
+    labels:
+      - homepage.group=IoT
+      - homepage.name=Node-RED
+      - homepage.icon=node-red.svg
+      - homepage.href=http://flatsun.at.hskrk.pl:1880
+      - homepage.description=Flow-based programming for the IoT
     networks:
       - node-red
       - asterisk
