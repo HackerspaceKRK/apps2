@@ -1,0 +1,162 @@
+esphome:
+  name: pm-prawy
+  friendly_name: pm_prawy
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  output_power: 11
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "pm-prawy"
+    password: "powermeter"
+
+captive_portal:
+
+web_server:
+
+prometheus:
+
+esp32:
+  board: lolin_s2_mini
+  framework:
+    type: arduino
+
+logger:
+  level: WARN
+
+uart:
+  tx_pin: GPIO40
+  rx_pin: GPIO39
+  baud_rate: 4800
+  parity: NONE
+  stop_bits: 1
+
+external_components:
+    source: github://alufers/power-meter-9000
+
+sensor:
+  - platform: uptime
+    name: Uptime
+  - platform: bl0939addr
+    id: chA
+    update_interval: 10s
+    voltage:
+      name: 'v_A'
+    current_1:
+      name: 'v_Piec'
+    current_2:
+      name: 'v_Serwery'
+    active_power_1:
+      name: 'Piec'
+    active_power_2:
+      name: 'Serwery'
+    energy_1:
+      name: 'e_Piec'
+    energy_2:
+      name: 'e_Serwery'
+    energy_total:
+      name: 'e_A'
+    address: 0
+    current_reference: 438921.675
+    voltage_reference: 16740.165
+    power_reference: 1147.908
+    energy_reference: 9852.572
+
+  - platform: bl0939addr
+    id: ch1
+    update_interval: 10s
+    voltage:
+      name: 'v_B'
+    current_1:
+      name: 'c_Elelab'
+    current_2:
+      name: 'c_Audytorium i AnC'
+    active_power_1:
+      name: 'Elelab'
+    active_power_2:
+      name: 'Audytorium i AnC'
+    energy_1:
+      name: 'e_Elelab'
+    energy_2:
+      name: 'e_Audytorium i AnC'
+    energy_total:
+      name: 'e_B'
+    address: 1
+    current_reference: 438921.675
+    voltage_reference: 16740.165
+    power_reference: 1147.908
+    energy_reference: 9852.572
+  
+  - platform: bl0939addr
+    id: ch2
+    update_interval: 10s
+    voltage:
+      name: 'v_C'
+    current_1:
+      name: 'c_CNC laserownia'
+    current_2:
+      name: 'c_Kuchnia'
+    active_power_1:
+      name: 'CNC laserownia'
+    active_power_2:
+      name: 'Kuchnia'
+    energy_1:
+      name: 'e_CNC laserownia'
+    energy_2:
+      name: 'e_Kuchnia'
+    energy_total:
+      name: 'e_C'
+    address: 2
+    current_reference: 438921.675
+    voltage_reference: 16740.165
+    power_reference: 1147.908
+    energy_reference: 9852.572
+
+  - platform: bl0939addr
+    id: ch3
+    update_interval: 10s
+    voltage:
+      name: 'v_D'
+    current_1:
+      name: 'c_Lazienka, korytarz, klatka'
+    current_2:
+      name: 'c_Magazyn, podworko'
+    active_power_1:
+      name: 'Lazienka, korytarz, klatka'
+    active_power_2:
+      name: 'Magazyn, podworko'
+    energy_1:
+      name: 'e_Lazienka, korytarz, klatka'
+    energy_2:
+      name: 'e_Magazyn, podworko'
+    energy_total:
+      name: 'e_D'
+    address: 3
+    current_reference: 438921.675
+    voltage_reference: 16740.165
+    power_reference: 1147.908
+    energy_reference: 9852.572
+
+switch:
+  - platform: gpio
+    pin: 15
+    name: "LED"
+
+binary_sensor:
+  - platform: gpio
+    name: "button"
+    pin: GPIO0
+
+button:
+  - platform: restart
+    name: "Reboot"

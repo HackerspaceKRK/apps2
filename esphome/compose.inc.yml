@@ -1,0 +1,13 @@
+services:
+  esphome:
+    image: ghcr.io/esphome/esphome:latest
+    restart: unless-stopped
+    volumes:
+      - ./config:/config
+      # See: https://github.com/esphome/esphome/blob/dev/docker/docker_entrypoint.sh#L6
+      - ./build:/build # Separate those so that configs can be checked in to git someday
+      - ./cache:/cache # Separate those so that configs can be checked in to git someday
+      - /opt/secrets/esphome_secrets.yaml:/config/secrets.yaml
+      - /etc/localtime:/etc/localtime:ro
+    privileged: true
+    network_mode: host
