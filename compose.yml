@@ -6,3 +6,4 @@
 include:
   # - ./system/docker-compose.inc.yml
   - ./mqtt/compose.inc.yml
+  - ./zigbee2mqtt/compose.inc.yml

@@ -1,0 +1,15 @@
+services:
+    zigbee2mqtt:
+        image: ghcr.io/koenkk/zigbee2mqtt
+        restart: unless-stopped
+        volumes:
+            - ./data:/app/data
+            - ./configuration.yaml:/app/data/configuration.yaml
+            - /opt/secrets/zigbee2mqtt_secrets.yaml:/app/data/secrets.yaml:ro
+        ports:
+            # Frontend port
+            - 8180:8080
+        environment:
+            - TZ=Europe/Berlin
+        networks:
+            - mqtt

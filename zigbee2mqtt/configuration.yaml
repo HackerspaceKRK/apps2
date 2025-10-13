@@ -1,0 +1,86 @@
+version: 4
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://mqtt:1883
+  user: z2m
+  password: '!secrets.yaml password'
+serial:
+  port: tcp://10.12.20.220:6638
+  baudrate: 115200
+  adapter: ember
+  disable_led: false
+advanced:
+  last_seen: ISO_8601
+  transmit_power: 20
+  log_level: info
+  channel: 11
+  network_key: '!secrets.yaml network_key'
+  pan_id: 15966
+  ext_pan_id:
+    - 214
+    - 65
+    - 166
+    - 209
+    - 54
+    - 132
+    - 184
+    - 223
+frontend:
+  enabled: true
+  port: 8080
+homeassistant:
+  enabled: false
+devices:
+  '0xa4c13849c9c5058e':
+    friendly_name: environ/audytorium
+  '0xa4c1387f872d5682':
+    friendly_name: lights/corridor/up
+    state_action: true
+  '0xa4c138713176ee30':
+    friendly_name: lights/corridor/down
+    state_action: true
+  '0xa4c138eca75c0dfa':
+    friendly_name: lights/artsandcrafts
+  '0xa4c1380c4606baaa':
+    friendly_name: lights/elelab
+  '0xa4c138f2323bc0d9':
+    friendly_name: environ/elelab
+  '0xa4c1389fcdd20d0f':
+    friendly_name: lights/bathroom
+  '0xa4c138da0cdf6943':
+    friendly_name: lights/cnc
+  '0xd44867fffe1246a7':
+    friendly_name: environ/artsandcrafts
+  '0x08ddebfffeac5bda':
+    friendly_name: environ/kuznia
+  '0xf4b3b1fffe29d472':
+    friendly_name: environ/magazynek
+  '0x08ddebfffead0d1c':
+    friendly_name: environ/cnc
+  '0x08ddebfffeac5bd7':
+    friendly_name: environ/maszynownia
+  '0x70b3d52b6001b5ed':
+    friendly_name: '0x70b3d52b6001b5ed'
+  '0xa49e69fffe72215f':
+    friendly_name: '0xa49e69fffe72215f'
+  '0xa4c1381b758d30e5':
+    friendly_name: lights/kuznia_ostrzegawcze
+  '0xa4c138c5c3e9c5e8':
+    friendly_name: lights/kuznia
+  '0xa4c138974c57a7b1':
+    friendly_name: lights/audytorium
+  '0xa4c138242e19fe41':
+    friendly_name: lights/mini_korytarzyk
+  '0xa4c138912c269921':
+    friendly_name: '0xa4c138912c269921'
+  '0xa4c138ba2989821a':
+    friendly_name: lights/maszynownia
+  '0xa4c13871c99ed08c':
+    friendly_name: '0xa4c13871c99ed08c'
+groups: {}
+ota:
+  zigbee_ota_override_index_location: >-
+    https://raw.githubusercontent.com/romasku/tuya-zigbee-switch/refs/heads/main/zigbee2mqtt/ota/index_router.json
+  image_block_response_delay: 160
+  update_check_interval: 1441
+  default_maximum_data_size: 80
