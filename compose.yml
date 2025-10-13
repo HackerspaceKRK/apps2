@@ -9,3 +9,4 @@ include:
   - ./zigbee2mqtt/compose.inc.yml
   - ./esphome/compose.inc.yml
   - ./ciscofon-server/compose.inc.yml
+  - ./unifi/compose.inc.yml
