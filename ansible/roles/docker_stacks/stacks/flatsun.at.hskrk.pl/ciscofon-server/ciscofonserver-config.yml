@@ -1,6 +1,0 @@
-tftp:
-  port: 69
-  dir: /srv/tftp
-http:
-  port: 5068
-  dir: /srv/http

@@ -6,19 +6,19 @@ services:
 
     privileged: true
 
-# 2G SHM to bylo za malo nawet na v1 kamer u nas
+    # 2G SHM to bylo za malo nawet na v1 kamer u nas
     shm_size: 4G
     mem_limit: 8G
 
     devices:
-#      - /dev/dri/renderD128
+      #      - /dev/dri/renderD128
       - /dev/bus/usb:/dev/bus/usb
 
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./conf:/config
       - /data/frigate:/media/frigate
-#      - ./frigate-tmp:/tmp/cache # Spróbujmy z cache w RAM :D
+      #      - ./frigate-tmp:/tmp/cache # Spróbujmy z cache w RAM :D
       - type: tmpfs
         target: /tmp/cache
         tmpfs:
