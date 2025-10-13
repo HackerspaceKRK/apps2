@@ -13,3 +13,9 @@ services:
             - TZ=Europe/Berlin
         networks:
             - mqtt
+        labels:
+            - homepage.group=IoT
+            - homepage.name=Zigbee2MQTT
+            - homepage.description=Zigbee network management
+            - homepage.icon=zigbee2mqtt.svg
+            - homepage.href=http://flatsun.at.hskrk.pl:8180
