@@ -5,7 +5,11 @@ services:
     ports:
       - "5068:5068" # Http
       - "69:69/udp" # TFTP
+    networks:
+        - ciscofon-server
     volumes:
       - ./ciscofonserver-config.yml:/config/ciscofonserver.yaml:ro
       - ./tftp-root:/srv/tftp:rw
       - ./http-root:/srv/http:rw
+networks:
+    ciscofon-server:
