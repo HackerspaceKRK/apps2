@@ -1,2 +1,8 @@
+# This is the apps2 master docker compose stack.
+# It shall be the only compose.yml file in the whole repository.
+# It includes all "copose.inc.yml" files for all the services.
+
+
 include:
-  - ./system/docker-compose.inc.yml
+  # - ./system/docker-compose.inc.yml
+  - ./mqtt/compose.inc.yml
