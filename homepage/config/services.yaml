@@ -2,6 +2,32 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/services/
 
+- Security:
+    - Authentik:
+        href: https://auth.apps.hskrk.pl
+        description: Logowanie
+        icon: authentik.svg
+
+- Monitoring:
+    - "Grafana":
+        href: http://grafana.apps.hskrk.pl
+        description: Wykresy i alerty (YC)
+        icon: grafana.svg
+
+- Networking:
+    - "Lalacer":
+       href: http://10.12.20.1/
+       description: Główny Router/Switch na Limanowskiego
+       icon: mikrotik.svg
+    - "Modem LTE":
+       href: http://192.168.1.1/
+       description: Modem LTE przy drzwiach
+       icon: openwrt.svg
+    - "Alacer":
+       href: http://10.12.5.2/
+       description: Router w YC
+       icon: mikrotik.svg
+
 - IoT:
     - Domofon:
         href: http://10.12.20.10
@@ -15,5 +41,4 @@
         href: http://10.12.20.21/
         description: Power consumption meter
         icon: /icons/powermeter.png
-    
 
