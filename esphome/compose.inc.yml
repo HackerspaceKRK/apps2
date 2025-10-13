@@ -17,3 +17,5 @@ services:
       - homepage.icon=esphome-alt.svg
       - homepage.href=http://flatsun.at.hskrk.pl:6052
       - homepage.description=Manage ESP8266/ESP32 devices
+      - homepage.widget.type=esphome
+      - homepage.widget.url=http://flatsun.at.hskrk.pl:6052
