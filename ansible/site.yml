@@ -9,7 +9,6 @@
   hosts: apps2
   roles:
     - { role: apps2_host, tags: apps }
-    - { role: docker_stacks, tags: docker }
     - role: ntd.nut
       nut_mode: standalone
       nut_ups:
