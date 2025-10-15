@@ -72,11 +72,13 @@ devices:
   '0xa4c138242e19fe41':
     friendly_name: lights/mini_korytarzyk
   '0xa4c138912c269921':
-    friendly_name: '0xa4c138912c269921'
+    friendly_name: lights/magazynek
   '0xa4c138ba2989821a':
     friendly_name: lights/maszynownia
   '0xa4c13871c99ed08c':
-    friendly_name: '0xa4c13871c99ed08c'
+    friendly_name: lights/bathroom/cabins
+  '0xf4b3b1fffe6baa2b':
+    friendly_name: environ/korytarz
 groups: {}
 ota:
   zigbee_ota_override_index_location: >-
