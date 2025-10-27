@@ -38,6 +38,11 @@ services:
     networks:
       - frigate
       - services-monitoring
-
+      - mqtt
+    secrets:
+      - FRIGATE_MQTT_PASSWORD
 networks:
     frigate:
+secrets:
+    FRIGATE_MQTT_PASSWORD: # Secret must be all named with all caps so that frigate picks it up
+        file: /opt/secrets/frigate_mqtt_password.txt

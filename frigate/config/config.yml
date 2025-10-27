@@ -1,7 +1,11 @@
 version: 0.16-0
 
 mqtt:
-  enabled: false
+  enabled: true
+  host: mqtt
+  port: 1883
+  user: frigate
+  password: "{FRIGATE_MQTT_PASSWORD}"
 
 birdseye:
   enabled: false
