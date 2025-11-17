@@ -79,6 +79,18 @@ devices:
     friendly_name: lights/bathroom/cabins
   '0xf4b3b1fffe6baa2b':
     friendly_name: environ/korytarz
+  '0xa4c13866c59a9c24':
+    friendly_name: lights/elelab_luk_prawy
+  '0xa4c138290989760e':
+    friendly_name: fan/kuznia
+  '0xa4c1386e897c08f8':
+    friendly_name: fan/artsandcrafts
+  '0xa4c138191f834afe':
+    friendly_name: lights/maszynownia/na_zewnatrz
+  '0xa4c1381a3a745938':
+    friendly_name: lights/kuchnia
+  '0x0ceff6fffeffc173':
+    friendly_name: environ/czujnik_czadu_maszynownia
 groups: {}
 ota:
   zigbee_ota_override_index_location: >-
